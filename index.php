@@ -18,11 +18,13 @@ case '/xe-transfer-like':
 case '/xe-transfer-like/' :
 require_once('controllers/home.php');
 break;
+
+case '/xe-transfer-like/upload':
+case '/xe-transfer-like/upload/':
+require_once('controllers/upload.php');
+break;
+
 }
-// case '/memegenerator/upload':
-// case '/memegenerator/upload/':
-// require_once('controllers/upload.php');
-// break;
 
 // case '/memegenerator/render':
 // case '/memegenerator/render/':
