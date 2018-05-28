@@ -1,0 +1,11 @@
+
+
+ENVOI DE A a B avec message et URL
+
+$sql = "SELECT mail_user, message, url_file, mail_destinataire FROM users\n"
+    . "INNER JOIN send ON users.id_user = send.id_user\n"
+    . "INNER JOIN file ON file.id_file = send.id_file\n"
+    . "INNER JOIN destinataire ON destinataire.id_destinataire = send.id_destinataire";
+
+
+    
