@@ -8,5 +8,22 @@
 </head>
 <body>
     home
+
+    <form id="form" method="post" action="upload" enctype="multipart/form-data">
+
+        <p>
+            <input type="hidden" name="MAX_FILE_SIZE" value="100000000000">
+            <input type="file" name="upFile">    </br> 
+            <input type="text" name="userMail" placeholder="Votre Mail"> </br> 
+            <input type="text" name="destinataireMail" placeholder="Mail Destinataire"> </br> 
+            
+            <textarea rows="4" cols="50"> Votre Message</textarea> 
+            <input type="submit" name="upload" value="Envoyer">
+        </p>
+
+    </form>
+
+
+
 </body>
 </html>
