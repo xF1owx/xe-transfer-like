@@ -19,13 +19,14 @@ echo "</br>";
      return $result;
 }
 
-function uploadFileFile($path,$filename){
+function uploadFileFile($path,$filename,$date){
     
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO file (url_file, name_file ) VALUES (:path,:filename)");
+    $response=$bdd->prepare("INSERT INTO file (url_file, name_file, file_date ) VALUES (:path,:filename,:date)");
     $response->bindParam(":path", $path, PDO::PARAM_STR);
     $response->bindParam(":filename", $filename, PDO::PARAM_STR);
+    $response->bindParam(":date", $date, PDO::PARAM_STR);
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
@@ -36,38 +37,59 @@ echo "</br>";
 
      return $result;
 }
-function uploadFileDest($destinatairemail){
+function uploadFileDest($destinatairemail,$message){
     
     var_dump("lol-".$destinatairemail);
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO destinataire(mail_destinataire) VALUES(:destinatairemail)");
+    $response=$bdd->prepare("INSERT INTO destinataire(mail_destinataire, message) VALUES(:destinatairemail,:message)");
     $response->bindParam(":destinatairemail", $destinatairemail, PDO::PARAM_STR);
+    $response->bindParam(":message", $message, PDO::PARAM_STR);
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
    echo "de request destinataire mail:";
-   var_dump ($destinatairemail);
+   var_dump ($destinatairemail,$message);
 echo "</br>";
 
 
      return $result;
 }
 
-function uploadFileSend($message,$date){
+
+function lastIdUser(){
+global $bdd;
+	$response=$bdd->prepare("SELECT MAX(id_user) AS lastIdUser FROM users");
+	$response->execute();
+
+	$result=$response->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
     
-
-    global $bdd;
-    $response=$bdd->prepare("INSERT INTO send(message,date_send) VALUES(:message,:date)");
-    $response->bindParam(":message", $message, PDO::PARAM_STR);
-    $response->bindParam(":date", $date, PDO::PARAM_INT);
-    $response->execute();
-
-   $result=$response->fetchAll(PDO::FETCH_ASSOC);
-   echo "de request message et date mail:";
-   var_dump ($message,$date);
-   echo "</br>";
-
-
-     return $result;
 }
+function lastIdFile(){
+    global $bdd;
+        $response=$bdd->prepare("SELECT MAX(id_file) AS lastIdFile FROM file");
+        $response->execute();
+    
+        $result=$response->fetch(PDO::FETCH_ASSOC);
+    
+        return $result;
+        
+    }
+    function lastIdDest(){
+        global $bdd;
+            $response=$bdd->prepare("SELECT MAX(id_destinataire) AS lastIdDest FROM destinataire");
+            $response->execute();
+        
+            $result=$response->fetch(PDO::FETCH_ASSOC);
+        
+            return $result;
+            
+        }
+
+
+                    function insertTableSend($lastiduser,$lastidfile,$lastiddest){
+                        
+
+                    }
