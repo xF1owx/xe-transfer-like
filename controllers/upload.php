@@ -7,10 +7,11 @@ require_once('models/request.php');
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
 $message = ($_POST['message']);
-$date = time();
-$filename = $_FILES['upFile']['name'];
+$date = microtime();//TIMESTAMP DATE DU JOUR //
+$filename = time().$_FILES['upFile']['name']; 
 
-
+var_dump($_POST);
+var_dump($date);
 
 if (isset($_FILES['upFile'])){
 
@@ -22,6 +23,7 @@ if (isset($_FILES['upFile'])){
   uploadFileuser($usermail);
   uploadFileFile($path,$date,$filename);
   uploadFileDest($destinatairemail);
+  uploadFileSend($message,$date);
 
 }
 else{

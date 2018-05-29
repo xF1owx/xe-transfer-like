@@ -7,7 +7,8 @@ function uploadFileuser($usermail){
     
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO `users`(mail_user) VALUES ($usermail)");
+    $response=$bdd->prepare("INSERT INTO users(mail_user) VALUES (:usermail)");
+    $response->bindParam(":usermail", $usermail, PDO::PARAM_STR);
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
@@ -22,7 +23,9 @@ function uploadFileFile($path,$filename){
     
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO `file`(url_file, name_file ) VALUES ($path,$filename)");
+    $response=$bdd->prepare("INSERT INTO file (url_file, name_file ) VALUES (:path,:filename)");
+    $response->bindParam(":path", $path, PDO::PARAM_STR);
+    $response->bindParam(":filename", $filename, PDO::PARAM_STR);
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
@@ -35,9 +38,11 @@ echo "</br>";
 }
 function uploadFileDest($destinatairemail){
     
+    var_dump("lol-".$destinatairemail);
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO `destinatraire`(mail_destinataire) VALUES ($destinatairemail)");
+    $response=$bdd->prepare("INSERT INTO destinataire(mail_destinataire) VALUES(:destinatairemail)");
+    $response->bindParam(":destinatairemail", $destinatairemail, PDO::PARAM_STR);
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
@@ -53,7 +58,9 @@ function uploadFileSend($message,$date){
     
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO `send`(`message`,date_send) VALUES ($message,$date)");
+    $response=$bdd->prepare("INSERT INTO send(message,date_send) VALUES(:message,:date)");
+    $response->bindParam(":message", $message, PDO::PARAM_STR);
+    $response->bindParam(":date", $date, PDO::PARAM_INT);
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
