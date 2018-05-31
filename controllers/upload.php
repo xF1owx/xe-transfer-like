@@ -29,13 +29,14 @@ if (isset($_FILES['upFile'])){
   $lastiddest = lastIdDest(); //fonctionne, récupère derniere ligne dans la table destinataire //
   
 
-  var_dump ($lastiduser); 
+  var_dump ($lastiduser['lastIdUser']); 
   var_dump ($lastidfile);
-  var_dump ($lastiddest);
-
-
-
+  var_dump ($message);
   
+  userSend($lastiduser['lastIdUser'], $lastidfile['lastIdFile'], $lastiddest['lastIdDest'],$message, $date);
+
+
+
 }
 else{
     echo "error";

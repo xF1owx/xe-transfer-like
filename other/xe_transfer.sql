@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 29 Mai 2018 à 13:39
+-- Généré le :  Jeu 31 Mai 2018 à 09:00
 -- Version du serveur :  10.0.34-MariaDB-0ubuntu0.16.04.1
 -- Version de PHP :  7.0.30-0ubuntu0.16.04.1
 
@@ -28,16 +28,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `destinataire` (
   `id_destinataire` int(11) NOT NULL,
-  `mail_destinataire` varchar(255) NOT NULL,
-  `message` varchar(255) NOT NULL
+  `mail_destinataire` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `destinataire`
 --
 
-INSERT INTO `destinataire` (`id_destinataire`, `mail_destinataire`, `message`) VALUES
-(1, 'testmaildest@gmail.com', '');
+INSERT INTO `destinataire` (`id_destinataire`, `mail_destinataire`) VALUES
+(1, 'testmaildest@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -48,16 +47,15 @@ INSERT INTO `destinataire` (`id_destinataire`, `mail_destinataire`, `message`) V
 CREATE TABLE `file` (
   `id_file` int(11) NOT NULL,
   `name_file` varchar(255) NOT NULL,
-  `url_file` varchar(255) NOT NULL,
-  `file_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `url_file` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Contenu de la table `file`
 --
 
-INSERT INTO `file` (`id_file`, `name_file`, `url_file`, `file_date`) VALUES
-(1, 'users.svg', 'other/users.svg', '2018-05-29 11:36:37');
+INSERT INTO `file` (`id_file`, `name_file`, `url_file`) VALUES
+(1, 'users.svg', 'other/users.svg');
 
 -- --------------------------------------------------------
 
