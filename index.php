@@ -1,17 +1,18 @@
 <?php
 
- $url = explode('/', $_SERVER['REQUEST_URI'], 4);
+//  $url = explode('/', $_SERVER['REQUEST_URI'], 4);
 
- if(count($url) > 3){
-    array_pop($url);
-}
+//  if(count($url) > 3){
+//     array_pop($url);
+// }
 
 //  var_dump($url);
 // echo "<br>";
 // var_dump($url);
 // echo "<br>";
-$path = implode('/', $url);
+// $path = implode('/', $url);
 
+$path = $_SERVER['REQUEST_URI'];
 
 switch ($path) {
 case '/xe-transfer-like':
@@ -22,6 +23,11 @@ break;
 case '/xe-transfer-like/upload':
 case '/xe-transfer-like/upload/':
 require_once('controllers/upload.php');
+break;
+
+case '/xe-transfer-like/uploadSuccess':
+case '/xe-transfer-like/uploadSuccess/':
+require_once('controllers/uploadSuccess.php');
 break;
 
 }

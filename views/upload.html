@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+
+{% block content %} 
+<div class="navbar">
+    <a href="/xe-transfer-like"><img class="logo" src="assets/medias/logo.png"></a>
+    
+</div>
+
+    <form id="form" method="post" action="upload" enctype="multipart/form-data">
+
+        <p class="form">
+            <input type="hidden" name="MAX_FILE_SIZE" value="100000000000">
+            <input class="btn" type="file" name="upFile"></br> 
+            <input class="textarea" type="text" name="userMail" placeholder="Votre Mail"></br> 
+            <input class="textarea" type="text" name="destinataireMail" placeholder="Mail Destinataire"></br> 
+            
+            <textarea class="textarea" name="message" rows="4" cols="50" placeholder="Votre Message"></textarea> 
+            <input class="btn" type="submit" name="upload" value="Envoyer">
+        </p>
+
+    </form>
+{% endblock %}

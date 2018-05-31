@@ -1,29 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    home
-
-    <form id="form" method="post" action="upload" enctype="multipart/form-data">
-
-        <p>
-            <input type="hidden" name="MAX_FILE_SIZE" value="100000000000">
-            <input type="file" name="upFile">    </br> 
-            <input type="text" name="userMail" placeholder="Votre Mail"> </br> 
-            <input type="text" name="destinataireMail" placeholder="Mail Destinataire"> </br> 
-            
-            <textarea name="message" rows="4" cols="50" placeholder="Votre Message"> </textarea> 
-            <input type="submit" name="upload" value="Envoyer">
-        </p>
-
-    </form>
+{% extends "main.html" %}
 
 
+{% block content %} 
 
-</body>
-</html>
+<h1 class="title">Bienvenue sur</br>XE Transfer</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-xl-12">
+            <img class="logoAccueil" src="assets/medias/logo.png">
+                <p class="text">Transfèrer vos fichiers volumineux grâce à notre plateforme simple, rapide et fonctionnelle!</p>
+                    <input type="button" value="Accèder à notre service" onclick="window.location.href='upload'" />
+                <p class="slogan">Xe Transfer<br>T'inquiete, je gère !!!</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %} 
