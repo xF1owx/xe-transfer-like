@@ -43,7 +43,7 @@ function uploadFileDest($destinatairemail,$message){
     
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO destinataire(mail_destinataire, message) VALUES(:destinatairemail,:message)");
+    $response=$bdd->prepare("INSERT INTO destinataire(mail_destinataire, message_destinataire) VALUES(:destinatairemail,:message)");
     $response->bindParam(":destinatairemail", $destinatairemail, PDO::PARAM_STR);
     $response->bindParam(":message", $message, PDO::PARAM_STR);
     $response->execute();
@@ -114,3 +114,5 @@ function lastIdFile(){
                         $response->bindParam(":date", $date, PDO::PARAM_INT);                       
                         $response->execute();
                     }
+
+                    

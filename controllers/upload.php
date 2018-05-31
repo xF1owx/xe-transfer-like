@@ -35,9 +35,14 @@ if (isset($_FILES['upFile'])){
   
   userSend($lastiduser['lastIdUser'], $lastidfile['lastIdFile'], $lastiddest['lastIdDest'],$message, $date);
 
+  mail($destinatairemail,'sujet', 'Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.
+  Vous pouvez utiliser ce lien '.$path.' pendant 10 jours.
+  avec le message : '.$message.'');
+  echo 'mail envoyé';
+  echo '<p><a href="/xe-transfer-like">Retour à l\'accueil</a></p>';
+  }
 
 
-}
 else{
     echo "error";
 }
