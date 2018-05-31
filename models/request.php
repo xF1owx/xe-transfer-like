@@ -20,14 +20,15 @@ echo "</br>";
      return $result;
 }
 
-function uploadFileFile($path,$filename,$date){
+function uploadFileFile($path,$filename,$date,$downloadcode){
     
 
     global $bdd;
-    $response=$bdd->prepare("INSERT INTO file (url_file, name_file, file_date ) VALUES (:path,:filename,:date)");
+    $response=$bdd->prepare("INSERT INTO file (url_file, name_file, file_date, download_code ) VALUES (:path,:filename,:date,:downloadcode)");
     $response->bindParam(":path", $path, PDO::PARAM_STR);
     $response->bindParam(":filename", $filename, PDO::PARAM_STR);
     $response->bindParam(":date", $date, PDO::PARAM_STR);
+    $response->bindParam(":downloadcode", $downloadcode, PDO::PARAM_STR);
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
@@ -113,6 +114,17 @@ function lastIdFile(){
                         $response->bindParam(":message", $message, PDO::PARAM_STR);
                         $response->bindParam(":date", $date, PDO::PARAM_INT);                       
                         $response->execute();
+                    }
+
+
+                    function getFileDownload($urlfile){
+
+                        global $bdd;
+                        $response=$bdd->prepare("SELECT url_file FROM file WHERE download_code = :urlfile");
+                        $response->bindParam(":urlfile", $urlfile, PDO::PARAM_STR);
+                        $response->execute();
+
+
                     }
 
                     
