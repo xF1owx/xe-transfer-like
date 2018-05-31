@@ -30,6 +30,10 @@ case '/xe-transfer-like/uploadSuccess/':
 require_once('controllers/uploadSuccess.php');
 break;
 
+case '/xe-transfer-like/mail':
+case '/xe-transfer-like/mail/':
+require_once('controllers/mail.php');
+break;
 }
 
 // case '/memegenerator/render':
