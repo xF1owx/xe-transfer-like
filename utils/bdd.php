@@ -2,7 +2,7 @@
 
 try{
   
-    $bdd=new PDO('mysql:host=localhost;dbname=xe_transfer;charset=utf8','adnane','piccolo333');
+    $bdd=new PDO('mysql:host=localhost;dbname=xe_transfer;charset=utf8','','');
 }
 catch(Exeption $e)
 {      
