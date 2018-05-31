@@ -12,6 +12,7 @@ function uploadFileuser($usermail){
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
+   echo "</br>";
    echo "de adresse user de request:";
    var_dump ($usermail);
 echo "</br>";
@@ -30,6 +31,7 @@ function uploadFileFile($path,$filename,$date){
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
+   echo "</br>";
 echo "de request path et nom fichier:";
    var_dump ($path,$filename);
 echo "</br>";
@@ -39,7 +41,6 @@ echo "</br>";
 }
 function uploadFileDest($destinatairemail,$message){
     
-    var_dump("lol-".$destinatairemail);
 
     global $bdd;
     $response=$bdd->prepare("INSERT INTO destinataire(mail_destinataire, message) VALUES(:destinatairemail,:message)");
@@ -48,6 +49,7 @@ function uploadFileDest($destinatairemail,$message){
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
+   echo "</br>";
    echo "de request destinataire mail:";
    var_dump ($destinatairemail,$message);
 echo "</br>";
@@ -90,6 +92,25 @@ function lastIdFile(){
 
 
                     function insertTableSend($lastiduser,$lastidfile,$lastiddest){
-                        
+                        global $bdd;
+                        $response=$bdd->prepare("");
+                        $response->execute();
 
+                        $result=$response->fetch(PDO::FETCH_ASSOC);
+
+                        return $result;
+
+                    }
+
+                    function userSend($lastiduser,$lastidfile, $lastiddest,$message, $date)
+                    {                                
+
+                        global $bdd;
+                        $response=$bdd->prepare("INSERT INTO send(id_user_send,id_destinataire,message, date_send, id_file) VALUES(:lastIdUser,:lastIdFile,:lastIdDest,:message,:date)");                        
+                        $response->bindParam(":lastIdUser",  $lastiduser, PDO::PARAM_INT);
+                        $response->bindParam(":lastIdFile", $lastidfile, PDO::PARAM_INT);
+                        $response->bindParam(":lastIdDest", $lastiddest, PDO::PARAM_INT);
+                        $response->bindParam(":message", $message, PDO::PARAM_STR);
+                        $response->bindParam(":date", $date, PDO::PARAM_INT);                       
+                        $response->execute();
                     }
