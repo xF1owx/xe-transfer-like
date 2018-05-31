@@ -1,8 +1,10 @@
 <?php 
-
-require_once('views/home.html');
+require_once ('vendor/autoload.php');
+// require_once('views/upload.html');
 require_once('models/request.php');
 
+$loader = new Twig_Loader_Filesystem('views');
+$twig = new Twig_Environment($loader, array('cache' => false));
 
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
@@ -51,7 +53,13 @@ if (isset($_FILES['upFile'])){
 
 else{
     echo "error";
+    
 }
+
+
+$template = $twig->load('upload.html');
+echo $template->render(array());
+
 
 
 
