@@ -9,11 +9,11 @@ $twig = new Twig_Environment($loader, array('cache' => false));
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
 $message = ($_POST['message']);
-$date = microtime();//TIMESTAMP DATE DU JOUR //
+$date = time();//TIMESTAMP DATE DU JOUR //
 $filename = time().$_FILES['upFile']['name']; 
 
 var_dump($_POST);
-var_dump($date);
+var_dump($_FILES['upFile']['name']);
 
 if (isset($_FILES['upFile'])){
 
@@ -23,9 +23,21 @@ if (isset($_FILES['upFile'])){
     move_uploaded_file($_FILES['upFile']['tmp_name'], $path);
 
   uploadFileuser($usermail);
-  uploadFileFile($path,$date,$filename);
-  uploadFileDest($destinatairemail);
-  uploadFileSend($message,$date);
+  uploadFileFile($path,$filename,$date);
+  uploadFileDest($destinatairemail,$message);
+
+  $lastiduser = lastIdUser(); //fonctionne, récupère derniere ligne dans la table users //
+  $lastidfile = lastIdFile(); //fonctionne, récupère derniere ligne dans la table file //
+  $lastiddest = lastIdDest(); //fonctionne, récupère derniere ligne dans la table destinataire //
+  
+
+  var_dump ($lastiduser['lastIdUser']); 
+  var_dump ($lastidfile);
+  var_dump ($message);
+  
+  userSend($lastiduser['lastIdUser'], $lastidfile['lastIdFile'], $lastiddest['lastIdDest'],$message, $date);
+
+
 
 }
 else{

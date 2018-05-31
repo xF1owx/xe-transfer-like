@@ -1,5 +1,2 @@
-utils/
-.htaccess
-composer.json
-composer.lock
 vendor/
+utils/
