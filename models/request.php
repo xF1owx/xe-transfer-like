@@ -12,10 +12,6 @@ function uploadFileuser($usermail){
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
-   echo "</br>";
-   echo "de adresse user de request:";
-   var_dump ($usermail);
-echo "</br>";
 
      return $result;
 }
@@ -44,11 +40,7 @@ function uploadFileDest($destinatairemail,$message){
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
-   echo "</br>";
-   echo "de request destinataire mail:";
-   var_dump ($destinatairemail,$message);
-echo "</br>";
-
+  
 
      return $result;
 }

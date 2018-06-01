@@ -1,25 +1,22 @@
 <?php 
 require_once ('vendor/autoload.php');
-// require_once('views/upload.html');
 require_once('models/request.php');
 
 $loader = new Twig_Loader_Filesystem('views');
 $twig = new Twig_Environment($loader, array('cache' => false));
 
+
+$filename = time().$_FILES['upFile']['name'];
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
 $message = ($_POST['message']);
 $date = time();//TIMESTAMP DATE DU JOUR //
-$filename = time().$_FILES['upFile']['name']; 
+ 
 $downloadcode = time();
 
 
-var_dump($_POST);
-var_dump($_FILES['upFile']['name']);
+if ((!empty($_FILES['upFile']))&(!empty($usermail))&(!empty($destinatairemail))&(!empty($message))){
 
-if (isset($_FILES['upFile'])){
-
-    
     $pathRoot = $_SERVER['DOCUMENT_ROOT'];
     $pathProjet = '/xe-transfer-like/';
     $pathCourt = 'assets/medias/files/';
@@ -51,8 +48,10 @@ if (isset($_FILES['upFile'])){
 
 //  https://florianr.promo-17.codeur.online/public/xe-transfer-like/assets/medias/files/xxxxxxxxxxx //
 
+
+
 else{
-    echo "error";
+    echo "Veuillez remplir tous les champs";
     
 }
 
