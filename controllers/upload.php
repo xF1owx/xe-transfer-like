@@ -15,7 +15,7 @@ $date = time();//TIMESTAMP DATE DU JOUR //
 $downloadcode = time();
 
 
-if ((!empty($_FILES['upFile']))&(!empty($usermail))&(!empty($destinatairemail))&(!empty($message))){
+if ((!isset($_FILES['upFile']))&(!isset($usermail))&(!isset($destinatairemail))&(!isset($message))){
 
     $pathRoot = $_SERVER['DOCUMENT_ROOT'];
     $pathProjet = '/xe-transfer-like/';
