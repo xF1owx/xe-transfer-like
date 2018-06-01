@@ -20,7 +20,6 @@ require_once('controllers/uploadSuccess.php');
 break;
 
 
-
 default:
 require_once('controllers/home.php');
 }

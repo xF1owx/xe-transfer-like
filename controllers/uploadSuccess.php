@@ -11,4 +11,4 @@ $twig = new Twig_Environment($loader, array('cache' => false));
 $template = $twig->load('uploadSuccess.html');
 echo $template->render(array());
 
-echo "FICHIER UPLOADé";
+echo "FICHIER UPLOADé"; 
