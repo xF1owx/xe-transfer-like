@@ -27,7 +27,7 @@ function uploadFileFile($path,$filename,$downloadcode){
     $response->execute();
 
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
- 
+   
      return $result;
 }
 function uploadFileDest($destinatairemail,$message){
@@ -42,6 +42,7 @@ function uploadFileDest($destinatairemail,$message){
    $result=$response->fetchAll(PDO::FETCH_ASSOC);
   
 
+
      return $result;
 }
 
@@ -52,7 +53,7 @@ global $bdd;
 	$response->execute();
 
 	$result=$response->fetch(PDO::FETCH_ASSOC);
-
+    
     return $result;
     
 }

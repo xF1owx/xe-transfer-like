@@ -1,5 +1,4 @@
 <?php
-
 $action = ( isset( $_GET['action']) )? $_GET['action'] : "home";
 
 switch ($action){
@@ -16,9 +15,10 @@ case 'file':
 require_once('controllers/download.php');
 break;
 
-case 'success':
+case 'uploadSuccess':
 require_once('controllers/uploadSuccess.php');
 break;
+
 
 
 default:
