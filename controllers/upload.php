@@ -7,29 +7,6 @@ $twig = new Twig_Environment($loader, array('cache' => false));
 
 
 
-
-
-
-if(!empty($_FILES)){
-  $nomFichier = $_FILES['file']['name'];
-  $tempRep = $_FILES['file']['tmp_name'];
-  $error = $_FILES['file']['error'];
-
-  if($error != 0 || !$tempRep){
-    echo "Erreur : le fichier n'a pas pu être uploadé!";
-    die();
-  }
-
-  if(move_uploaded_file($tempRep, 'files/'.$nomFichier)){
-    echo "Chargement du fichier".$nomFichier."terminé!";
-  }else{
-    echo "Une erreur est survenue lors de l'envoi du fichier!";
-  }
-}
-
-
-
-
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
 $message = ($_POST['message']);
@@ -67,22 +44,45 @@ if (isset($_FILES['upFile'])){
 
      userSend($lastiduser['lastIdUser'], $lastidfile['lastIdFile'], $lastiddest['lastIdDest'],$message, $date);
 
+
+
      
      $to = $destinatairemail;
-$subject = "Votre fichier";
+     $subject = "Votre fichier";
+
+
+
 
 $messagex = "
 <html>
 <head>
-<title>HTML email</title>
+<title>Votre Fichier </title>
 </head>
-<body>
-<img src=\"https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\">
-<p> Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.</p>
+<body class='fond'>
+<p><img src=\"https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\"></p>
+<p class='tex'> Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.</br>
 Vous pouvez utiliser ce  <a href=\"https://florianr.promo-17.codeur.online/xe-transfer-like/file/$downloadcode\"> lien </a> 
-<p> avec le message : '.$message.'');</p>
+avec le message : '.$message.'');</p>
 </body>
 </html>
+<style>
+ .fond{
+  background-image: url('https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+ }
+ body{
+   text-align:center;
+ }
+
+ .tex{
+   margin-left: 40px;
+   margin-bottom: 40px;
+   color: white;
+   font-size:25px;
+ 
+ }
+</style>
 ";
 
 // Always set content-type when sending HTML email
@@ -94,8 +94,7 @@ $headers .= 'From: <xe-transfer-like@mamen.com>' . "\r\n";
 $headers .= 'Cc: myboss@example.com' . "\r\n";
 
 mail($to,$subject,$messagex,$headers);
-    
-     echo 'mail envoyé';
+
      echo '<p><a href="/xe-transfer-like">Retour à l\'accueil</a></p>';
 
 
@@ -105,7 +104,7 @@ mail($to,$subject,$messagex,$headers);
      }
 
 else{
-  echo "TG";
+  echo "Formulaire érroné ou incomplet";
 }
 
 

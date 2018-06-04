@@ -10,15 +10,19 @@
 
         <p class="form">
             <input type="hidden" name="MAX_FILE_SIZE" value="100000000000">
-            <input class="btn" type="file" name="upFile"></br> 
-            <input class="textarea" type="text" name="userMail" placeholder="Votre Mail"></br> 
-            <input class="textarea" type="text" name="destinataireMail" placeholder="Mail Destinataire"></br> 
+            <input class="btn" type="file" name="upFile">
+            <p id="errorusermail"> </p>
+            <input id="email" name="userMail" type="email" placeholder="Votre email" required aria-required="true"></br> 
+            <p class="destinatairemail"></p>
+            <input class="textarea" type="email" name="destinataireMail" placeholder="Mail Destinataire" required aria-required="true"></br> 
             
             <textarea class="textarea" name="message" rows="4" cols="50" placeholder="Votre Message"></textarea> 
             <input class="btn" type="submit" name="upload" value="Envoyer">
         </p>
 
     </form>
+    <script type="text/javascript" src="check.js"></script>
 
+    
 
 {% endblock %}

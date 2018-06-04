@@ -11,15 +11,17 @@
         <p class="form">
             <input type="hidden" name="MAX_FILE_SIZE" value="100000000000">
             <input class="btn" type="file" name="upFile"></br> 
-            <input class="textarea" type="text" name="userMail" placeholder="Votre Mail"></br> 
+            <input class="textarea" type="text" name="userMail" onblur="verifMail(this)" placeholder="Votre Mail"></br>
+            <p class="errorusermail"></p> 
             <input class="textarea" type="text" name="destinataireMail" placeholder="Mail Destinataire"></br> 
-            
+            <p class="errordestinatairemail"></p> 
             <textarea class="textarea" name="message" rows="4" cols="50" placeholder="Votre Message"></textarea> 
             <input class="btn" type="submit" name="upload" value="Envoyer">
         </p>
 
     </form>
 
+    <script src="../check.js"></script>
 
 {% endblock %}
 
