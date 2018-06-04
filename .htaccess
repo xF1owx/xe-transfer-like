@@ -1,17 +1,15 @@
-#on suit les liens symboliques
-
-# Options +FollowSymLinks
+Options +FollowSymLinks
 
 #Activation du mod rewrite d'apache
 
 RewriteEngine On
 
-RewriteRule ^xe-transfer-like/$ index.php?action=home [L,QSA]
-
-RewriteRule ^(upload)$ index.php?action=$1 [L,QSA]
+RewriteRule ^(file)/(.*)$ index.php?action=$1&url=$2 [L,QSA]
 
 RewriteRule ^(uploadSuccess) index.php?action=$1 [L,QSA]
 
-RewriteRule ^(mail) index.php?action=$1 [L,QSA]
+RewriteRule ^(upload) index.php?action=$1 [L,QSA]
 
- 
+RewriteRule ^xe-transfer-like index.php?action=home [L,QSA]
+
+RewriteRule ^(formulaire) index.php?action=$1 [L,QSA]

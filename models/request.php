@@ -1,7 +1,7 @@
 <?php
 
 require_once('utils/bdd.php');
-require_once('controllers/upload.php');
+// require_once('controllers/upload.php');
 
 function uploadFileuser($usermail){
     

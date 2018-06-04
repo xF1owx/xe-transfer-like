@@ -62,10 +62,35 @@ if (isset($_FILES['upFile'])){
      var_dump ($usermail);
 
      userSend($lastiduser['lastIdUser'], $lastidfile['lastIdFile'], $lastiddest['lastIdDest'],$message, $date);
+
      
-     mail($destinatairemail,'sujet', 'Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.
-     Vous pouvez utiliser ce lien https://florianr.promo-17.codeur.online/xe-transfer-like/file/'.$downloadcode.' pendant 10 jours.
-     avec le message : '.$message.'');
+     $to = $destinatairemail;
+$subject = "Votre fichier";
+
+$messagex = "
+<html>
+<head>
+<title>HTML email</title>
+</head>
+<body>
+<img src=\"https://nicolasj.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\">
+<p> Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.</p>
+Vous pouvez utiliser ce  <a href=\"https://nicolasj.promo-17.codeur.online/xe-transfer-like/file/$downloadcode\"> lien </a> 
+<p> avec le message : '.$message.'');</p>
+</body>
+</html>
+";
+
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <xe-transfer-like@mamen.com>' . "\r\n";
+$headers .= 'Cc: myboss@example.com' . "\r\n";
+
+mail($to,$subject,$messagex,$headers);
+    
      echo 'mail envoyé';
      echo '<p><a href="/xe-transfer-like">Retour à l\'accueil</a></p>';
 
