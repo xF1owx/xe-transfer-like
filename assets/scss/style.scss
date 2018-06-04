@@ -1,6 +1,7 @@
 @media screen and (max-width: 640px) {
 body{
-    background-color: beige;
+    background-color: rgb(207, 207, 207);
+    margin: 0;
 }
 .navbar{
     width: 100%;
@@ -8,8 +9,15 @@ body{
     background-color: grey;
 }
 .logo{
-    height: 50px;
+    height: 60px;
 }
+.logoAccueil{
+    display: block;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .title{
     text-align: center;
 }
@@ -25,4 +33,43 @@ body{
     display: block;
     text-align: center;
 }
+.textarea{
+    width: 300px;
+    height: 60px;
 }
+.btn{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+.validation{
+    width: 70px;
+    height: 70px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+h2{
+    text-align: center;
+}
+span{
+    text-transform: uppercase;
+    color: red;
+}
+.message{
+    text-align: center;
+}
+.message1{
+    color: red;
+    text-align: center;
+}
+.bor{
+    border:10px solid gray;
+}
+}
+@media screen and (min-width: 1200px) {
+body{
+    background-image: url("../medias/background.jpg");
+
+}}

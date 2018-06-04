@@ -5,6 +5,31 @@ require_once('models/request.php');
 $loader = new Twig_Loader_Filesystem('views');
 $twig = new Twig_Environment($loader, array('cache' => false));
 
+
+
+
+
+
+if(!empty($_FILES)){
+  $nomFichier = $_FILES['file']['name'];
+  $tempRep = $_FILES['file']['tmp_name'];
+  $error = $_FILES['file']['error'];
+
+  if($error != 0 || !$tempRep){
+    echo "Erreur : le fichier n'a pas pu être uploadé!";
+    die();
+  }
+
+  if(move_uploaded_file($tempRep, 'files/'.$nomFichier)){
+    echo "Chargement du fichier".$nomFichier."terminé!";
+  }else{
+    echo "Une erreur est survenue lors de l'envoi du fichier!";
+  }
+}
+
+
+
+
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
 $message = ($_POST['message']);
