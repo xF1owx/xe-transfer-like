@@ -8,15 +8,63 @@
 
     <form id="form" method="post" action="upload" enctype="multipart/form-data">
 
-        <p class="form">
             <input type="hidden" name="MAX_FILE_SIZE" value="100000000000">
-            <input class="btn" type="file" name="upFile"></br> 
+            <input id="upFile" class="btn" type="file" name="upFile"></br> 
             <input class="textarea" type="text" name="userMail" placeholder="Votre Mail"></br> 
             <input class="textarea" type="text" name="destinataireMail" placeholder="Mail Destinataire"></br> 
             
             <textarea class="textarea" name="message" rows="4" cols="50" placeholder="Votre Message"></textarea> 
-            <input class="btn" type="submit" name="upload" value="Envoyer">
-        </p>
+            <input class="btn" type="submit" name="envoi" value="Envoyer" onclick="uploadFichier()"/>
+            {# <input type="button" value="Envoyer" name="upload" onclick="uploadFichier()"/> #}
+<progress id="progressBar" value="0" max="100"></progress>
+    
+        </form>
+<h2 id="status"></h2>
+    <p id="status_bytes"></p>
 
-    </form>
+
+
+
+<script>
+    function _(elmt){
+        return document.getElementById(elmt);
+    }
+    function uploadFichier(){
+    var file = _('upFile').files[0];
+    var data = new FormData();
+    data.append('upFile', file);
+
+    var ajax = new XMLHttpRequest();
+    ajax.upload.addEventListener("progress",progressHandler, false);
+    ajax.addEventListener("load",completeHandler, false);
+    ajax.addEventListener("error",errorHandler, false);
+    ajax.addEventListener("abort",abortHandler, false);
+    ajax.open("POST", "upload.php");
+    ajax.send(data);
+
+
+    
+}
+event.preventDefault();
+        event.stopPropagation();
+function progressHandler(event){
+_('status_bytes').innerHTML = event.loaded + ' bytes uploadés sur ' + event.total;
+var pourcentage = (event.loaded / event.total) * 100;
+_('progressBar').value = Math.round(pourcentage);
+_('status').innerHTML = Math.round(pourcentage) + '% uploadés... Patientez';
+}
+
+function completeHandler(event){
+    _('status').innerHTML = event.target.responseText;
+    _('progressBar').value = 0;
+}
+function errorHandler(){
+    _('status').innerHTML = "L'upload a échoué!"
+}
+function abortHandler(){
+    _('status').innerHTML = "L'upload a été annulé!"
+}
+
+</script>
+    
 {% endblock %}

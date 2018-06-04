@@ -18,6 +18,6 @@ $file = getFileDownload($urlfile);
 $template = $twig->load('download.html');
 echo $template->render(array());
 
-echo "<a href=\"https://florianr.promo-17.codeur.online/xe-transfer-like/".$file['url_file']."\"> Lien </a>";
+echo "<a href=\"https://nicolasj.promo-17.codeur.online/xe-transfer-like/".$file['url_file']."\"> Lien </a>";
 
 ?>
