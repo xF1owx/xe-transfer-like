@@ -19,6 +19,10 @@ case 'uploadSuccess':
 require_once('controllers/uploadSuccess.php');
 break;
 
+case 'formulaire':
+require_once('controllers/formulaire.php');
+break;
+
 
 default:
 require_once('controllers/home.php');
