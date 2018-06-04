@@ -10,11 +10,12 @@ $twig = new Twig_Environment($loader, array('cache' => false));
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
 $message = ($_POST['message']);
-$date = time();//TIMESTAMP DATE DU JOUR //
+$date = date('Y-m-d 00:00:00'); 
 $filename = time().$_FILES['upFile']['name']; 
 $downloadcode = time();
 
-
+var_dump($date);
+echo "coucou";
 
 if (isset($_FILES['upFile'])){
  
