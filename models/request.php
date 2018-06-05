@@ -118,4 +118,22 @@ function lastIdFile(){
 
                     }
 
-                    
+
+                    function deleteOlderColumn()
+                    {                                
+
+                        global $bdd;
+                        $response=$bdd->prepare("DELETE destinataire,file,send,users
+                        FROM send
+                        INNER JOIN destinataire
+                        ON send.id_destinataire=destinataire.id_destinataire
+                        INNER JOIN file
+                        ON file.id_file=send.id_file
+                        INNER JOIN users
+                        ON users.id_user=send.id_user_send
+                        WHERE date_send <DATE_SUB(NOW(), INTERVAL 10 DAY)");
+                                              
+                       $response->execute();
+                    }
+               
+                   

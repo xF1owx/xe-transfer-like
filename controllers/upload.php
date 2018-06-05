@@ -27,7 +27,7 @@ if (isset($_FILES['upFile'])){
        move_uploaded_file($_FILES['upFile']['tmp_name'], $path);
    
      uploadFileuser($usermail);
-     uploadFileFile($pathCourt.$filename,$filename,$date, $downloadcode);
+     uploadFileFile($pathCourt.$filename,$filename, $downloadcode);
      uploadFileDest($destinatairemail,$message);
    
      $lastiduser = lastIdUser(); //fonctionne, récupère derniere ligne dans la table users //
@@ -35,12 +35,10 @@ if (isset($_FILES['upFile'])){
      $lastiddest = lastIdDest(); //fonctionne, récupère derniere ligne dans la table destinataire //
      
    
-     var_dump ($lastiduser['lastIdUser']); 
-     var_dump ($lastidfile);
-     var_dump ($message);
-     var_dump ($destinatairemail);
-     var_dump ($usermail);
+     
      userSend($lastiduser['lastIdUser'], $lastidfile['lastIdFile'], $lastiddest['lastIdDest'],$message, $date);
+     
+     deleteOlderColumn();
      
      $to = $destinatairemail;
      $subject = "Votre fichier";
@@ -50,26 +48,22 @@ $messagex = "
 <title>Votre Fichier </title>
 </head>
 <body class='fond'>
-<p><img src=\"https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\"></p>
-<p class='tex'> Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.</br>
-Vous pouvez utiliser ce  <a href=\"https://florianr.promo-17.codeur.online/xe-transfer-like/file/$downloadcode\"> lien </a> 
-avec le message : '.$message.'');</p>
+<p><img src=\"http://nicolasj.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\"></p>
+<p class='tex'> Bonjour,</br>
+$usermail vous adresse ce message '$message'.</br> Votre fichier est en attente de téléchargement.</br>
+Vous avez 10 jours pour le récupèrer à cette  <a href=\"https://nicolasj.promo-17.codeur.online/xe-transfer-like/file/$downloadcode\"> adresse</a>.</p>
 </body>
-</html>
+</html> 
 <style>
- .fond{
-  background-image: url('https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
- }
  body{
    text-align:center;
+   background-color: rgb(207, 207, 207);
  }
  .tex{
    margin-left: 40px;
    margin-bottom: 40px;
-   color: white;
    font-size:25px;
+   text-align: center;
  
  }
 </style>
@@ -83,7 +77,7 @@ $headers .= 'Cc: myboss@example.com' . "\r\n";
 mail($to,$subject,$messagex,$headers);
      echo '<p><a href="/xe-transfer-like">Retour à l\'accueil</a></p>';
 
-     header('location: https://florianr.promo-17.codeur.online/xe-transfer-like/uploadSuccess');
+     header('location: https://nicolasj.promo-17.codeur.online/xe-transfer-like/uploadSuccess');
                 exit();
      }
 else{

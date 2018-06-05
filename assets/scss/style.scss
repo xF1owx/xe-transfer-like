@@ -24,6 +24,13 @@ $color-white: white;
     text-align: center;
 }
 
+
+.lien{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
 @media screen and (max-width: 640px) {
 body{
     background-color: $color-background;
@@ -39,7 +46,7 @@ margin: 0;
 }
 .logoAccueil{
     display: block;
-    width: 300px;
+    width: 280px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -201,18 +208,7 @@ h2{
     font-size: 25px;
     text-align: center;
 }
-.download
-{
-width: 75px;
-height: 75px;
-align-content: center;
-text-align: center;
-}
-.lien{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 .parc{
     display: block;
     margin-left: auto;
@@ -221,6 +217,13 @@ text-align: center;
     margin-bottom: 40px; 
 width: 500px;
 height: 50px;
+text-align: center;
+}
+.download
+{
+width: 75px;
+height: 75px;
+align-content: center;
 text-align: center;
 }
 }
