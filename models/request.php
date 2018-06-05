@@ -94,7 +94,6 @@ function lastIdFile(){
                     {                                
 
                         global $bdd;
-                        echo "INSERT INTO send(id_user_send, id_destinataire, message, date_send, id_file) VALUES(".$lastiduser.",".$lastiddest.",'".$message."', ".$date.",".$lastidfile.")";
                         $response=$bdd->prepare("INSERT INTO send(id_user_send, id_destinataire, message, date_send, id_file) VALUES(:lastIdUser,:lastIdDest,:message, :date,:lastIdFile)");                        
                         $response->bindParam(":lastIdUser",  $lastiduser, PDO::PARAM_INT);
                         $response->bindParam(":lastIdFile", $lastidfile, PDO::PARAM_INT);

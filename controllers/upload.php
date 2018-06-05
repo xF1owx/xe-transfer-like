@@ -1,16 +1,20 @@
 <?php 
 require_once ('vendor/autoload.php');
 require_once('models/request.php');
+
+
 $loader = new Twig_Loader_Filesystem('views');
 $twig = new Twig_Environment($loader, array('cache' => false));
+
+
 $usermail = ($_POST['userMail']);
 $destinatairemail = ($_POST['destinataireMail']);
 $message = ($_POST['message']);
 $date = date('Y-m-d 00:00:00'); 
 $filename = time().$_FILES['upFile']['name']; 
 $downloadcode = time();
-var_dump($date);
-echo "coucou";
+
+
 if (isset($_FILES['upFile'])){
  
      
@@ -23,7 +27,7 @@ if (isset($_FILES['upFile'])){
        move_uploaded_file($_FILES['upFile']['tmp_name'], $path);
    
      uploadFileuser($usermail);
-     uploadFileFile($pathCourt.$filename,$filename,$date,$downloadcode);
+     uploadFileFile($pathCourt.$filename,$filename,$date, $downloadcode);
      uploadFileDest($destinatairemail,$message);
    
      $lastiduser = lastIdUser(); //fonctionne, récupère derniere ligne dans la table users //
@@ -46,15 +50,15 @@ $messagex = "
 <title>Votre Fichier </title>
 </head>
 <body class='fond'>
-<p><img src=\"https://nicolasj.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\"></p>
+<p><img src=\"https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\"></p>
 <p class='tex'> Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.</br>
-Vous pouvez utiliser ce  <a href=\"https://nicolasj.promo-17.codeur.online/xe-transfer-like/file/$downloadcode\"> lien </a> 
+Vous pouvez utiliser ce  <a href=\"https://florianr.promo-17.codeur.online/xe-transfer-like/file/$downloadcode\"> lien </a> 
 avec le message : '.$message.'');</p>
 </body>
 </html>
 <style>
  .fond{
-  background-image: url('https://nicolasj.promo-17.codeur.online/xe-transfer-like/assets/medias/background.jpg');
+  background-image: url('https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
  }
@@ -78,7 +82,8 @@ $headers .= 'From: <xe-transfer-like@mamen.com>' . "\r\n";
 $headers .= 'Cc: myboss@example.com' . "\r\n";
 mail($to,$subject,$messagex,$headers);
      echo '<p><a href="/xe-transfer-like">Retour à l\'accueil</a></p>';
-     header('location: https://nicolasj.promo-17.codeur.online/xe-transfer-like/uploadSuccess');
+
+     header('location: https://florianr.promo-17.codeur.online/xe-transfer-like/uploadSuccess');
                 exit();
      }
 else{
