@@ -74,9 +74,10 @@
     margin-right: auto;
     margin-top: 40px;
     margin-bottom: 40px;
-    width: 300px;
+    width: auto;
     height: 30px;
-    text-align: center; }
+    text-align: center;
+    justify-content: center; }
 
   .validation {
     width: 70px;
@@ -204,9 +205,10 @@
         margin-right: auto;
         margin-top: 40px;
         margin-bottom: 40px;
-        width: 500px;
+        width: auto;
         height: 50px;
         text-align: center; 
+        justify-content: center;
       }
       .title {
         text-align: center; }
@@ -316,8 +318,9 @@
     margin-right: auto;
     margin-top: 40px;
     margin-bottom: 40px;
-    width: 500px;
+    width: auto;
     height: 50px;
-    text-align: center; } }
+    text-align: center; 
+  justify-content: center;} }
 
 /*# sourceMappingURL=style.css.map */
