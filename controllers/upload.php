@@ -27,7 +27,7 @@ if (isset($_FILES['upFile'])){
        move_uploaded_file($_FILES['upFile']['tmp_name'], $path);
    
      uploadFileuser($usermail);
-     uploadFileFile($pathCourt.$filename,$filename,$date, $downloadcode);
+     uploadFileFile($pathCourt.$filename,$filename, $downloadcode);
      uploadFileDest($destinatairemail,$message);
    
      $lastiduser = lastIdUser(); //fonctionne, récupère derniere ligne dans la table users //
@@ -50,25 +50,20 @@ $messagex = "
 <title>Votre Fichier </title>
 </head>
 <body class='fond'>
-<p><img src=\"https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\"></p>
+<p><img src=\"http://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/logo.png\"></p>
 <p class='tex'> Bonjour votre fichier de '.$usermail.' est en attente de téléchargement.</br>
 Vous pouvez utiliser ce  <a href=\"https://florianr.promo-17.codeur.online/xe-transfer-like/file/$downloadcode\"> lien </a> 
 avec le message : '.$message.'');</p>
 </body>
 </html>
 <style>
- .fond{
-  background-image: url('https://florianr.promo-17.codeur.online/xe-transfer-like/assets/medias/background.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
- }
+
  body{
    text-align:center;
  }
  .tex{
    margin-left: 40px;
    margin-bottom: 40px;
-   color: white;
    font-size:25px;
  
  }
